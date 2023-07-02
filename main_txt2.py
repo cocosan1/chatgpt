@@ -1,5 +1,4 @@
 import streamlit as st
-from dotenv import load_dotenv #環境変数を読み込む
 from llama_index import (
     GPTVectorStoreIndex,
     ServiceContext,
@@ -20,21 +19,12 @@ import sys
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-#環境変数を読み込む
-load_dotenv()
+#環境変数にキーをセット
+os.environ['OPENAI_API_KEY'] == st.secrets['OPENAI_API_KEY']
 
 st.markdown('### chatgpt Q&A')
 
-#質問の入力
-question = st.text_input('質問を入力してください')
-
-if not question:
-    st.info('質問を入力してください')
-    st.stop()
-
-pushed = st.button('テキストデータの収集＆統合&index化')
-
-if pushed:
+def make_index():
 ##########################google driveからテキストファイルの取得
     #current working dir
     cwd = os.path.dirname(__file__)
@@ -136,29 +126,57 @@ if pushed:
 
     st.info('index化完了')
 
-#storage_contextの読み込み
-storage_context = StorageContext.from_defaults(
-    docstore=SimpleDocumentStore.from_persist_dir(persist_dir="./storage_context"),
-    vector_store=SimpleVectorStore.from_persist_dir(persist_dir="./storage_context"),
-    index_store=SimpleIndexStore.from_persist_dir(persist_dir="./storage_context"),
-)
+def q_and_a():
 
-#############################Q&A
-# インデックスの読み込み
-index = load_index_from_storage(storage_context)
+    #質問の入力
+    question = st.text_input('質問を入力してください')
 
-query_engine = index.as_query_engine()
+    if not question:
+        st.info('質問を入力してください')
+        st.stop()
+    #storage_contextの読み込み
+    storage_context = StorageContext.from_defaults(
+        docstore=SimpleDocumentStore.from_persist_dir(persist_dir="./storage_context"),
+        vector_store=SimpleVectorStore.from_persist_dir(persist_dir="./storage_context"),
+        index_store=SimpleIndexStore.from_persist_dir(persist_dir="./storage_context"),
+    )
 
-# query_engine = vector_store_index.as_query_engine()
+    #############################Q&A
+    # インデックスの読み込み
+    index = load_index_from_storage(storage_context)
 
-response = query_engine.query(question)
+    query_engine = index.as_query_engine()
 
-for i in response.response.split("。"):
-    st.write(i + "。")
+    response = query_engine.query(question)
+
+    for i in response.response.split("。"):
+        st.write(i + "。")
 
 
-    # #ソースの表示
-    # st.write(response.source_nodes)
+        # #ソースの表示
+        # st.write(response.source_nodes)
+
+def main():
+    # アプリケーション名と対応する関数のマッピング
+    apps = {
+        'Q&A': q_and_a,
+        'txtのindex化': make_index
+
+    }
+    selected_app_name = st.selectbox(label='項目の選択',
+                                             options=list(apps.keys()))
+
+    if selected_app_name == '-':
+        st.info('項目を選択してください')
+        st.stop()
+    
+
+    # 選択されたアプリケーションを処理する関数を呼び出す
+    render_func = apps[selected_app_name]
+    render_func()
+
+if __name__ == '__main__':
+    main()
 
 
 
