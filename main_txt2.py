@@ -150,6 +150,7 @@ def qa_calc2():
 
     if clear_chat:
         st.session_state["chat_history"] = []
+        st.stop()
 
     #ストレージからindexデータの読み込み
     storage_context = StorageContext.from_defaults(
@@ -229,52 +230,10 @@ def qa_calc2():
 
     display_chat(st.session_state["chat_history"])
 
-
-def qa_calc():
-
-    #質問の入力
-    question = st.text_input('質問を入力してください')
-
-    if not question:
-        st.info('質問を入力してください')
-        st.stop()
-    #storage_contextの読み込み
-    storage_context = StorageContext.from_defaults(
-        docstore=SimpleDocumentStore.from_persist_dir(persist_dir="./storage_context"),
-        vector_store=SimpleVectorStore.from_persist_dir(persist_dir="./storage_context"),
-        index_store=SimpleIndexStore.from_persist_dir(persist_dir="./storage_context"),
-    )
-
-    #############################Q&A
-    # インデックスの読み込み
-    index = load_index_from_storage(storage_context)
-
-    QA_PROMPT_TMPL = (
-    "私たちは以下の情報をコンテキスト情報として与えます。 \n"
-    "---------------------\n"
-    "{context_str}"
-    "\n---------------------\n"
-    "あなたはAIとして、この情報をもとに質問を日本語で答えます。前回と同じ回答の場合は同じ回答を行います。: {query_str}\n"
-    )
-    QA_PROMPT = QuestionAnswerPrompt(QA_PROMPT_TMPL)
-
-    query_engine = index.as_query_engine(text_qa_template=QA_PROMPT)
-
-    # 質問を行う
-    response = query_engine.query(question)
-
-    for i in response.response.split("。"):
-        st.write(i + "。")
-
-
-    # #ソースの表示
-    # st.write(response.source_nodes)
-
 def main():
     # アプリケーション名と対応する関数のマッピング
     apps = {
         'Q&A2': qa_calc2,
-        'Q&A': qa_calc,
         'txtのindex化': make_index,
     }
     selected_app_name = st.selectbox(label='項目の選択',
