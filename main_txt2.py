@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_chat import message
 from llama_index import (
     GPTVectorStoreIndex,
     ServiceContext,
@@ -133,13 +134,22 @@ def make_index():
     st.info('index化完了')
 
 def qa_calc2():
-
+    
     #質問の入力
     question = st.text_input('質問を入力してください')
 
     if not question:
         st.info('質問を入力してください')
         st.stop()
+    
+    clear_chat = st.button("履歴消去")
+
+    # チャット履歴を保存
+    if "chat_history" not in st.session_state:
+        st.session_state["chat_history"] = []
+
+    if clear_chat:
+        st.session_state["chat_history"] = []
 
     #ストレージからindexデータの読み込み
     storage_context = StorageContext.from_defaults(
@@ -203,13 +213,22 @@ def qa_calc2():
     # テンプレを送る
     response = query_engine.query(question)
 
-    for i in response.response.split("。"):
-        st.write(i + "。")
+    #responseからtextとsourseの取り出し
+    response_text = response.response.replace("\n", "")
 
+    def display_chat(chat_history):
+        for i, chat in enumerate(reversed(chat_history)):
+            if "user" in chat:
+                message(chat["user"], is_user=True, key=str(i)) 
+            else:
+                message(chat["bot"])
+                
+    # 質問と応答をチャット履歴に追加
+    st.session_state["chat_history"].append({"user": question})
+    st.session_state["chat_history"].append({"bot": response_text})
 
-    # #ソースの表示
-    # st.write(response.source_nodes)
-  
+    display_chat(st.session_state["chat_history"])
+
 
 def qa_calc():
 
