@@ -8,6 +8,7 @@ from llama_index import (
     GPTListIndex,
     load_index_from_storage
 )
+from llama_index.prompts.prompts import RefinePrompt, QuestionAnswerPrompt
 from llama_index.storage.docstore import SimpleDocumentStore
 from llama_index.storage.index_store import SimpleIndexStore
 from llama_index.vector_stores import SimpleVectorStore
@@ -126,6 +127,9 @@ def make_index():
 
     st.info('index化完了')
 
+    # response変数を初期化する
+    response = None
+
 def q_and_a():
 
     #質問の入力
@@ -145,16 +149,35 @@ def q_and_a():
     # インデックスの読み込み
     index = load_index_from_storage(storage_context)
 
-    query_engine = index.as_query_engine()
+    # query_engine = index.as_query_engine()
+    # # 質問のテンプレートにコンテキストと質問を埋め込む
+    # context_str = "\n".join(response.source_nodes)
+    # query_str = question
 
+    # QA_PROMPT_TMPL = (
+    # "私たちは以下の情報をコンテキスト情報として与えます。 \n"
+    # "---------------------\n"
+    # "{context_str}"
+    # "\n---------------------\n"
+    # "あなたはAIとして、この情報をもとに質問を日本語で答えます。前回と同じ回答の場合は同じ回答を行います。: {query_str}\n"
+    # )
+
+    # prompt = QA_PROMPT_TMPL.format(context_str=context_str, query_str=query_str)
+
+    # # 質問を行う
+    # response = query_engine.query(prompt)
+
+
+    #基本形
+    query_engine = index.as_query_engine()
     response = query_engine.query(question)
 
     for i in response.response.split("。"):
         st.write(i + "。")
 
 
-        # #ソースの表示
-        # st.write(response.source_nodes)
+    # #ソースの表示
+    # st.write(response.source_nodes)
 
 def main():
     # アプリケーション名と対応する関数のマッピング
@@ -165,10 +188,6 @@ def main():
     }
     selected_app_name = st.selectbox(label='項目の選択',
                                              options=list(apps.keys()))
-
-    if selected_app_name == '-':
-        st.info('項目を選択してください')
-        st.stop()
     
 
     # 選択されたアプリケーションを処理する関数を呼び出す
