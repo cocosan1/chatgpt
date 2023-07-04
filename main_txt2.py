@@ -120,6 +120,8 @@ def make_index():
                 #結合後のファイルに書き込む
                 merged_file.write(read_text)
 
+                st.write(read_text)
+
     ###########################テキストデータの読み込み・index化
     documents = SimpleDirectoryReader(
         input_dir="./main").load_data()
@@ -160,23 +162,31 @@ def qa_calc2():
     )
 
     # 実装時点でデフォルトはtext-ada-embedding-002
+    #文書テキストを埋め込みベクトルに変換するためのモデル（事前学習済みのニューラルネットワークモデル）
     embed_model = OpenAIEmbedding()
 
+    #埋め込みモデルによるテキスト埋め込みを生成
+    #埋め込みベクトルを保持するためのリスト
     docs = []
+    #文書のIDとテキストの対応を保持するための辞書
     id_to_text_map = {}
+    #文書データを格納しているストレージコンテキストから文書の一覧を取得
     for i, (_, node) in enumerate(storage_context.docstore.docs.items()):
+        #文書ノード（node）からテキストを取得
         text = node.get_text()
+        #テキストの埋め込みを生成します
         docs.append(embed_model.get_text_embedding(text))
         id_to_text_map[i] = text
     docs = np.array(docs)
 
-    #text-ada-embedding-002から出力されるベクトル長を指定して、Faissにベクトルを登録しました。
-    # dimensions of text-ada-embedding-002
+
+    #text-ada-embedding-002から出力されるベクトル長を指定
     d = 1536
     index = faiss.IndexFlatL2(d)
+    #Faissにベクトルを登録
     index.add(docs)
 
-    #クエリをベクトル化し、kでFaissで何個の似たベクトルを探すか指定して、FaissReaderで類似するテキストを取得しました。
+   
     # クエリとFaissから取り出すノード数の設定
     query_text = question
     k = 2
@@ -191,13 +201,13 @@ def qa_calc2():
 
     st.write(f'count_node: {len(documents)}')
 
-    #Faissで確認した類似したノードを使って、GPTListIndexを作成しました。
+    
     # デバッグ用
     llama_debug_handler = LlamaDebugHandler()
     callback_manager = CallbackManager([llama_debug_handler])
     service_context = ServiceContext.from_defaults(callback_manager=callback_manager)
 
-    # GPTListIndexの作成
+    #Faissで確認した類似したノードを使って、GPTListIndexを作成。
     index = GPTListIndex.from_documents(documents, service_context=service_context)
 
     QA_PROMPT_TMPL = (
