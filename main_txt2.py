@@ -21,7 +21,7 @@ import os
 import glob
 import sys
 import numpy as np
-import faiss
+import faiss #Facebookが開発したベクター検索ライブラリ。意味が近い文書を検索できます。
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -138,13 +138,13 @@ def make_index():
 def qa_calc2():
     
     #質問の入力
-    question = st.text_input('質問を入力してください')
+    question = st.text_input('質問を入力してください', key='question')
 
     if not question:
         st.info('質問を入力してください')
         st.stop()
     
-    clear_chat = st.button("履歴消去")
+    clear_chat = st.button("履歴消去", key='clear_chat')
 
     # チャット履歴を保存
     if "chat_history" not in st.session_state:
@@ -239,6 +239,10 @@ def qa_calc2():
     st.session_state["chat_history"].append({"bot": response_text})
 
     display_chat(st.session_state["chat_history"])
+
+    st.write('sources')
+    st.write(response.get_formatted_sources(length=1000))
+    
 
 def main():
     # アプリケーション名と対応する関数のマッピング
