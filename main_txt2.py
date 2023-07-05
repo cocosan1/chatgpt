@@ -1,11 +1,11 @@
 import streamlit as st
 from streamlit_chat import message
 from llama_index import (
-    GPTVectorStoreIndex,
+    # GPTVectorStoreIndex,
     ServiceContext,
     StorageContext,
     SimpleDirectoryReader,
-    Document,
+    # Document,
     GPTListIndex,
     load_index_from_storage,
 )
@@ -126,7 +126,7 @@ def make_index():
     documents = SimpleDirectoryReader(
         input_dir="./main").load_data()
 
-    # GPTVectorStoreIndexの作成
+    # Indexの作成
     vector_store_index = GPTListIndex.from_documents(documents)
 
     ###########################persistでstorage_contextを保存
