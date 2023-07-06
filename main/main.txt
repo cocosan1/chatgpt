@@ -1,5 +1,3 @@
--飛驒産業のファブリックとして「ガウチョ」の採用が決定しました。詳細は https://drive.google.com/file/d/1twifB1rx12Pi8743VSessdeXNv3XPL3j/view?usp=sharing。
--SEOTO-EXチェアの皮革のしわの改善のため、張り方を見直しました。。詳細は https://drive.google.com/file/d/1BkUzS2_crnfui2ffM_gorW_8YWDAxl1u/view?usp=sharing
 ソファのきしみ音について調べたところ座った際の座枠のたわみによる、脚の開きからくる脚と床の接地面のこすれる音だと判明致しました。
 （脚裏にフェルトを貼るときしみ音が鳴らなくなった為）
 座った際のソファの座枠たわみは不良ではなく、座ると部材はしなります。
@@ -23,21 +21,17 @@ ZEHについて教えて。
 家具市場について2018年/家具販売店の売上1兆2300億円/売上100億円以上は上位5社/シエア60％/5年前より5.8％UP。
 家具市場の規模は１兆円ちょっと/ホームF３兆円/ニトリ: 家具４割（シェア２０％）:ホーム6割。
 
-ハイエースの荷台のサイズは？
-W150×D265×H130。
-展示スペース　１シーン　について教えて？
-展示スペース（シーンDセット＋２＋３P）W３間（5460）×D１間半（2730）＝9畳　4.5坪　導線抜き。
-星川の有休期間は？
-4/21～1年間。
-トライバリューについて教えて？
-・配送日の3日前に入庫
-・AM　8：00　～　14：00/　PM　12：00　～　18：00
-・前日に時間帯TEL連絡
-・第二希望日まで確認
-・休日　火曜日
-・発注時　品番　サイス　上代入力。
-ルンバについて教えて？
-４０cmあれば通ります。本体の幅３６cm 高さ92mm
+ハイエースの荷台のサイズはW150×D265×H130。
+展示に必要な面積は（シーンDセット＋２＋３P）W３間（5460）×D１間半（2730）＝9畳　4.5坪　導線抜き。
+星川の有休期間は4/21～1年間。
+
+トライバリューは配送日の3日前に入庫する必要があります。
+トライバリューの業務時間はAM　8：00　～　14：00/　PM　12：00　～　18：00です。
+トライバリューは配送の前日に時間帯をTEL連絡します。
+トライバリューに依頼するときは第二配送希望日まで確認してください。
+トライバリューの休日は火曜日です。
+トライバリューに発注するときは品番、サイズ、上代を入力してください。
+自動掃除機のルンバは４０cmあれば通ります。本体の幅３６cm 高さ92mmです。
 
 コロナの時に起こったことは在宅勤務増加。世界的にパンの手作りが増加/イーストが品薄に。
 デジタルデトックスとは疲れた脳と心を癒す。触覚刺激への回帰。
@@ -111,13 +105,12 @@ SEOTO-EXチェアの仕様変更（マジックバンド式）時期は2018/5/28
 -ファブリックの「こもれび」は、ヘラルボニー
 のアーティスト、伊賀敢男留(いが・かおる)さんの作品をモチ
 ーフにしています。詳細はhttps://drive.google.com/file/d/1AF6WSCqHT1X87qqNa1y2vw6J3yYOfp2j/view?usp=drive_link
--穂高はファブリックによって、1柄合わせあり 2センター合わせ 3柄合わせなし のどれかに決まっています。https://drive.google.com/file/d/1TKWcf3q1rryS8NVBHdl2fay-CSlMSH3n/view?usp=drive_link
+-ソファの穂高シリーズのクッションの柄合わせについて、ファブリックによって1柄合わせあり 2センター合わせ 3柄合わせなし のどれかに決まっています。https://drive.google.com/file/d/1TKWcf3q1rryS8NVBHdl2fay-CSlMSH3n/view?usp=drive_link
 -KISARAGIの天板の圧縮率と塗装の仕様変更を行います。詳細は https://drive.google.com/file/d/1h5qqg5gjmrLtO9wVSi7JadTMqwmodeVh/view?usp=drive_link
 -SG261Qをひも無し仕様に変更します。詳細は https://drive.google.com/file/d/1g194Otrj2QTGCDc2QYjJnUOgt7I-ij61/view?usp=drive_link
--ノンスリップ塗装の対応色は、今まで製品全体にノンスリップで塗装されていましたが、
-2018年1月1日受注分より、原則椅子の座面のみがノンスリップ塗装となります。詳細は https://drive.google.com/file/d/1adAIJBC47PvU52JwGwgBOC8YrT2ijhXR/view?usp=drive_link
+-ノンスリップ塗装は原則椅子の座面のみがノンスリップ塗装となります。詳細は https://drive.google.com/file/d/1adAIJBC47PvU52JwGwgBOC8YrT2ijhXR/view?usp=drive_link
 -ALMO、Chigusaシリーズのテーブル高さについてH70に仕様変更します。 詳細は https://drive.google.com/file/d/1ldfgFXxSPSZ5T-kfjzWaUg_pXEylaHGg/view?usp=drive_link
--アロマ商品の使用期限について 詳細は https://drive.google.com/file/d/1Ip80k-P3r7prbSsTjvRlMovc90RDX7IT/view?usp=drive_link
--アロマ関連商品の発注方法について　詳細は https://drive.google.com/file/d/1mh9Xv2EOloX1jcnM3idQwQNlj8712Mf-/view?usp=sharing
+-アロマ商品の使用期限について精油未開封は３年間となります。その他についての詳細は https://drive.google.com/file/d/1Ip80k-P3r7prbSsTjvRlMovc90RDX7IT/view?usp=drive_link
+-アロマ関連商品の発注方法について、「110 本社倉庫」の「工場手配」にてお願いいたします。　詳細は https://drive.google.com/file/d/1mh9Xv2EOloX1jcnM3idQwQNlj8712Mf-/view?usp=sharing
 -2022年2月10日より温雅シリーズが仕様変更するとともにサイズが追加になります。https://drive.google.com/file/d/14y8vV4HfheNNeE25f52VBeqPBJyxqtYp/view?usp=sharing
--テーブルの脚の共通化について、詳細は　https://drive.google.com/file/d/1_f212Kj2_JeBsjJlG98715GWW1YPd3yF/view?usp=sharing
+-テーブル脚部の共通化を推進します。詳細は　https://drive.google.com/file/d/1_f212Kj2_JeBsjJlG98715GWW1YPd3yF/view?usp=sharing
